@@ -1,6 +1,7 @@
 package org.woehlke.computer.kurzweil.simulated.evolution.model.cell;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.woehlke.computer.kurzweil.simulated.evolution.model.geometry.LatticePoint;
 
 import java.io.Serializable;
@@ -25,11 +26,13 @@ public abstract class Cell implements Serializable {
     /**
      * The Cell's state is position, orientation and LifeCycle
      */
+    @Getter
     protected Orientation orientation;
 
     /**
      * The Cell's state is position, orientation and LifeCycle
      */
+    @Setter
     protected LifeCycle lifeCycle;
 
     /**

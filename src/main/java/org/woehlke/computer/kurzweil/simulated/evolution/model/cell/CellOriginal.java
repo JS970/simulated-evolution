@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.woehlke.computer.kurzweil.simulated.evolution.model.geometry.LatticePoint;
 
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -25,8 +26,6 @@ import java.util.Random;
  * Time: 19:06:43
  */
 @Log4j2
-@ToString(exclude = {"random"})
-@EqualsAndHashCode(exclude = {"random"})
 public class CellOriginal extends Cell implements Serializable {
 
     static final long serialVersionUID = 242L;
@@ -77,6 +76,8 @@ public class CellOriginal extends Cell implements Serializable {
      */
     @Override
     public void move() {
+        boolean tmp = lifeCycle.move();
+        System.out.println("move() : " + tmp);
         if(lifeCycle.move()){
             getNextOrientation();
             position.add(orientation.getMove());
