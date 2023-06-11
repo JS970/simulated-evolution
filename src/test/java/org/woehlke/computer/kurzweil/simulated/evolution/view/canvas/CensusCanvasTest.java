@@ -66,6 +66,11 @@ public class CensusCanvasTest {
         setUpTab();
         canvas = new CensusCanvas(tab);
     }
+
+    /**
+     * Purpose : To check 7 status cells number's getter, setter working
+     * Expected : return each global static 7 int value.
+     */
     @Test
     public void checkYoungCellValue()
     {
@@ -106,14 +111,23 @@ public class CensusCanvasTest {
     {
         getValueByStatusTesting(LifeCycleStatus.POPULATION, POPULATION);
     }
+
+    /**
+     * Purpose : To check zoom value
+     * Expected : Zoom value
+     */
     @Test
     public void getZoomTesting(){
         double zoom = canvas.getZoom();
         Assert.assertEquals(5, zoom, 2);
     }
 
+    /**
+     * Purpose: getPatter test
+     * Expected : return paper, which is initialized by application.yml file.
+     */
     @Test
-    public void getterTest(){
+    public void getterPaper(){
         Color paperColor = canvas.getPaper();
         Assert.assertSame(paperColor, Color.WHITE);
 

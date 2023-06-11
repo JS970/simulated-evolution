@@ -15,23 +15,47 @@ public class PopulationStatusTest {
         status = new PopulationStatus();
         census = new SimulatedEvolutionPopulationCensus(0);
     }
-
+    /**
+     * Purpose : increase PopulationStatus number from given SimulatedEvolutionPopulationCensus
+     * Input : None
+     * Expected :
+     *      return void
+     *      increase Population number 1;
+     */
     @Test
     public void countStatus() {
         int beforeAdultCells = status.getCellsNumber(census);
         status.countStatus(census);
         Assert.assertEquals(beforeAdultCells + 1,  status.getCellsNumber(census));
     }
+
+    /**
+     * Purpose : get PopulationStatus cell's color
+     * Input : void
+     * Expected : return Color.WHITE
+     */
     @Test
     public void getColor() {
         Assert.assertSame(status.getColor(),Color.WHITE);
     }
 
+
+    /**
+     * get PopulationStatus cell's foreground color
+     * Input : void
+     * Expected : return Color.BLACK
+     */
     @Test
     public void getColorForeground() {
         Assert.assertSame(status.getColorForeground(),Color.BLACK);
     }
 
+
+    /**
+     * get PopulationStatus cell's background color
+     * Input : void
+     * Expected : return Color.WHITE
+     */
     @Test
     public void getColorBackground() {
         Assert.assertSame(status.getColorBackground(),Color.WHITE);
