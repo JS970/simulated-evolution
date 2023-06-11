@@ -1,28 +1,29 @@
 package org.woehlke.computer.kurzweil.simulated.evolution.config;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.woehlke.computer.kurzweil.simulated.evolution.model.cell.LifeCycleStatus;
-import org.woehlke.computer.kurzweil.simulated.evolution.view.SimulatedEvolutionTab;
-import org.woehlke.computer.kurzweil.simulated.evolution.view.census.CensusElement;
-
-import java.util.Properties;
-
+import jakarta.validation.constraints.Null;
+import org.junit.*;
 
 public class ComputerKurzweilPropertiesTest {
 
-    private static ComputerKurzweilProperties properties;
-    @BeforeClass
-    public static void setup(){
+    private ComputerKurzweilProperties properties;
+    @Before
+    public void setup(){
         String configFileName = "application.yml";
         String jarFilePath = "target/simulatedevolution.jar";
-
         properties = ComputerKurzweilProperties.propertiesFactory(
             configFileName, jarFilePath
         );
     }
+
+    @After
+    public void setNull(){
+        properties = null;
+    }
+
+    /**
+     * Purpose : Check properties value is same with application.yml setting value
+     * Expected : return value in application.yml.
+     */
     @Test
     public void allinonTest(){
         ComputerKurzweilProperties.Allinone allinon = properties.getAllinone();
@@ -248,7 +249,23 @@ public class ComputerKurzweilPropertiesTest {
     }
 
 
+    /**
+     * Purpose : Check if propertiesFactory method get invaild file name.
+     * Expected : return Default properties(new properties()), not null
+     *
+     *            Side effect : print error message
+     */
+    @Test
+    public void propertiesFactory_with_invalid_file_test() {
+        properties = null;
+        String configFileName = "wrong.yml";
+        String jarFilePath = "target/simulatedevolution2.jar";
 
+        properties = ComputerKurzweilProperties.propertiesFactory(
+            configFileName, jarFilePath
+        );
+        Assert.assertNotEquals(properties, null);
+    }
 
 }
 

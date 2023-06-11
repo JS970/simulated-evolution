@@ -17,6 +17,9 @@ public class AdultAgeStatusTest {
         census = new SimulatedEvolutionPopulationCensus(0);
     }
 
+    /**
+     * Pu
+     */
     @Test
     public void countStatus() {
         int beforeAdultCells = status.getCellsNumber(census);
