@@ -77,7 +77,6 @@ public class CellOriginal extends Cell implements Serializable {
     @Override
     public void move() {
         boolean tmp = lifeCycle.move();
-        System.out.println("move() : " + tmp);
         if(lifeCycle.move()){
             getNextOrientation();
             position.add(orientation.getMove());
